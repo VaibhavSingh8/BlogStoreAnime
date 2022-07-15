@@ -1,0 +1,33 @@
+{%extends 'basic.html'%}
+{% block title %}Add Your Blog{% endblock %}
+{%block start%}
+
+
+<section>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Blog</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for blog in blog_obj2%}
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{blog.title}}</td>
+                    <td>{{blog.created_at}}</td>
+                    <td>
+                        <a href="{% url 'blogUpdate' blog.slug%}" class="btn btn-success">UPDATE</a>
+                        <a href="{% url 'blogDelete' blog.id%}" class="btn btn-danger">DELETE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
